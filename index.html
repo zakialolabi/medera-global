@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medera Global — Health services in Georgia</title>
+  <meta name="description" content="Medera Global connects you with world class doctors and accredited clinics in Georgia, from first consultation to full recovery." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand-50:#ecf8f9;
+      --brand-100:#d8f1f3;
+      --brand-200:#b3e3e7;
+      --brand-300:#86d0d6;
+      --brand-400:#4fb7c0;
+      --brand-500:#138a94;
+      --brand-600:#0f7a84;
+      --brand-700:#0c636b;
+      --brand-800:#0a4f55;
+      --brand-900:#083f43;
+      --accent:#2f5bff;
+      --text:#0b1324;
+      --muted:#51607a;
+      --bg:#ffffff;
+      --surface:#0f172a;
+      --ring: rgba(19, 138, 148, .35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(15, 23, 42, .06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .wordmark{font-family:'Playfair Display', serif; font-weight:700; font-size:22px; letter-spacing:.2px; display:flex; align-items:baseline; gap:6px}
+    .wordmark .m{color:var(--text)}
+    .wordmark .g{color:var(--brand-500)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-name{display:none}
+    .nav-links{display:flex;gap:20px;align-items:center}
+    .nav a{opacity:.9}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:var(--radius);padding:12px 18px;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
+    .btn-primary{background:var(--brand-500);color:#fff}
+    .btn-primary:focus,.input:focus{outline:none; box-shadow:0 0 0 4px var(--ring)}
+    .btn-ghost{background:transparent}
+    .btn-sm{padding:10px 14px; font-size:14px; border-radius:12px}
+    .card .btn{margin-top:12px}
+
+    /* Hero */
+    .hero{padding:72px 0 40px}
+    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .eyebrow{color:var(--brand-700);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+    h1{font-family: "Playfair Display", serif; font-size:56px; line-height:1.05; margin:10px 0 14px}
+    .lead{font-size:18px;color:var(--muted);max-width:56ch;margin-bottom:24px}
+    .hero-card{background:linear-gradient(135deg, var(--brand-50), #fff); border:1px solid rgba(15,23,42,.08); padding:22px; border-radius:24px; box-shadow: var(--shadow)}
+
+    /* Feature grid */
+    .section{padding:72px 0}
+    .section.dark{background:var(--surface); color:#e6e9ef}
+    .section h2{font-family: "Playfair Display", serif; font-size:40px; margin:0 0 12px}
+    .kicker{color:var(--muted); margin:0 0 30px}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px}
+    .card{background:#fff; border:1px solid rgba(15,23,42,.08); border-radius:22px; padding:22px; box-shadow:var(--shadow)}
+    .icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--brand-100);margin-bottom:12px}
+    .card p{color:#51607a}
+
+    /* CTA banner */
+    .cta{display:flex; align-items:center; justify-content:space-between; gap:16px; background:linear-gradient(135deg, var(--brand-500), var(--accent)); color:#fff; border-radius:26px; padding:26px; box-shadow:var(--shadow)}
+    .cta h3{font-size:26px; margin:0}
+
+    /* Footer */
+    footer{padding:46px 0; color:#6b7280}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr; gap:20px}
+
+    /* Forms */
+    .input{width:100%; border:1px solid rgba(15,23,42,.12); border-radius:14px; padding:12px 14px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr}
+      h1{font-size:42px}
+      .grid{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
+      .cta{flex-direction:column; align-items:flex-start}
+      .nav-links{display:none}
+      .menu-btn{display:inline-flex}
+    }
+    .menu-btn{display:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="wordmark"><span class="m">Medera</span> <span class="g">Global</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-ghost" href="#cta">Get Started</a>
+      </nav>
+      <button class="btn menu-btn" aria-label="Open menu" onclick="alert('On mobile, keep it simple: link sections in the header or implement an off-canvas if needed.')">Menu</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">Trusted care. Clear guidance.</div>
+          <h1>Your gateway to world class doctors</h1>
+          <p class="lead">World class doctors, from first consultation to full recovery.</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap">
+            <a class="btn btn-primary" href="#cta">Start now</a>
+            <a class="btn" style="background:var(--brand-100)" href="#features">See features</a>
+          </div>
+        </div>
+        <div>
+          <div class="hero-card">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="People collaborating" style="border-radius:18px">
+            <p style="margin:12px 6px 0;color:#51607a">Use this image temporarily. Replace with your own visual or product screenshot.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <h2>Why choose Medera Global</h2>
+        <p class="kicker">Four ways we support your care in Georgia.</p>
+<div class="grid">
+          <div class="card">
+            <div class="icon">🦷</div>
+            <h3>Dental care</h3>
+            <p>$1</p>
+            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
+          </div>
+          <div class="card">
+            <div class="icon">🏥</div>
+            <h3>Prostatectomy</h3>
+            <p>$1</p>
+            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
+          </div>
+          <div class="card">
+            <div class="icon">🌿</div>
+            <h3>Wellness</h3>
+            <p>$1</p>
+            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
+          </div>
+          <div class="card">
+            <div class="icon">💇‍♂️</div>
+            <h3>Hair transplants</h3>
+            <p>$1</p>
+            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
+          </div>
+        </div></div></section>
+
+    <section id="about" class="section dark">
+      <div class="container">
+        <h2>About Medera Global</h2>
+        <p class="kicker" style="color:#b8c0d4">A human short story that builds credibility.</p>
+        <div class="grid" style="grid-template-columns:1.3fr .7fr">
+          <div>
+            <p>Share who you are in two short paragraphs. Mention experience, what makes your service different, and a hint of your vision. Keep it clear and friendly.</p>
+            <p>Use social proof if you have it. Add logos, testimonials, or numbers such as customers served or money saved.</p>
+          </div>
+          <div class="card" style="background:#0b1225;color:#d8deea;border:1px solid rgba(255,255,255,.08)">
+            <h3 style="margin-top:0">Quick facts</h3>
+            <ul>
+              <li>Founded in 2025 in Tbilisi</li>
+              <li>Based in Tbilisi</li>
+              <li>Remote friendly</li>
+              <li>Focused on delighting customers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="section">
+      <div class="container">
+        <div class="cta">
+          <h3>Ready to launch Medera Global</h3>
+          <a class="btn btn-primary" href="#contact">Contact us</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="kicker">Use a mailto link for now. Add a real form later when you pick a host.</p>
+        <div class="grid" style="grid-template-columns:1fr .7fr">
+          <form onsubmit="window.location.href='mailto:contact@mederaglobal.com?subject=Inquiry'; return false;">
+            <div style="display:grid;gap:12px;max-width:520px">
+              <input class="input" type="text" placeholder="Your name" required>
+              <input class="input" type="email" placeholder="Your email" required>
+              <textarea class="input" rows="5" placeholder="Tell us a bit about your needs"></textarea>
+              <button class="btn btn-primary" type="submit">Email us</button>
+            </div>
+          </form>
+          <div>
+            <div class="card">
+              <h3 style="margin-top:0">Company</h3>
+              <p>Rustaveli Ave 1<br>0108 Tbilisi<br>Tbilisi, Georgia</p>
+              <p><a href="mailto:contact@mederaglobal.com">contact@mederaglobal.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:8px">
+          <div class="wordmark"><span class="m">Medera</span> <span class="g">Global</span></div>
+        </div>
+        <small>© <span id="y"></span> Medera Global. All rights reserved.</small>
+      </div>
+      <div>
+        <strong>Pages</strong>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Social</strong>
+        <ul>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X</a></li>
+        </ul>
+      </div>
+    </div>
+  
+  <section id="brand" class="section">
+    <div class="container">
+      <h2>Brand assets</h2>
+      <p class="kicker">Primary logo and alternates for Medera Global. All vector SVG — ready for print and web.</p>
+      <div class="grid">
+        <div class="card">
+          <h3 style="margin-top:0">Primary — Medical Cross</h3>
+          <p>Rounded square with gradient and a balanced cross. Works at small sizes and clearly signals healthcare.</p>
+          <svg width="200" height="200" viewBox="0 0 64 64" fill="none" aria-label="Medera Global Primary Logo">
+            <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#gradPrimary)"/>
+            <defs>
+              <linearGradient id="gradPrimary" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop stop-color="var(--brand-500)"/>
+                <stop offset="1" stop-color="var(--accent)"/>
+              </linearGradient>
+            </defs>
+            <rect x="29" y="18" width="6" height="28" rx="2" fill="#fff"/>
+            <rect x="18" y="29" width="28" height="6" rx="2" fill="#fff"/>
+          </svg>
+          <p><small>Use: app icon, favicon, social avatar, small header.</small></p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Alternate — MG Monogram</h3>
+          <p>Geometric "MG" constructed from clean strokes. Professional and distinctive for non-clinical contexts.</p>
+          <svg width="200" height="200" viewBox="0 0 64 64" fill="none" aria-label="Medera Global MG Monogram">
+            <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#gradMG)"/>
+            <defs>
+              <linearGradient id="gradMG" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop stop-color="var(--brand-500)"/>
+                <stop offset="1" stop-color="var(--accent)"/>
+              </linearGradient>
+            </defs>
+            <!-- M -->
+            <path d="M16 44V20h4l6 10 6-10h4v24h-4V28l-6 10-6-10v16h-4Z" fill="#fff"/>
+            <!-- G -->
+            <path d="M36 32c0-6.6 4.6-12 12-12h0v4h0c-4.9 0-8 3.8-8 8s3.1 8 8 8v-6h-6v-4h10v14h-4c-7.4 0-12-5.4-12-12Z" fill="#fff"/>
+          </svg>
+          <p><small>Use: print, signage, partnerships where a letter-mark fits better.</small></p>
+        </div>
+        <div class="card" style="background:#0b1225;color:#d8deea;border:1px solid rgba(255,255,255,.08)">
+          <h3 style="margin-top:0">Wordmark</h3>
+          <p>Typeset pairing for headers and stationery. Use alone or alongside the symbol.</p>
+          <div style="display:grid;gap:6px">
+            <div style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;letter-spacing:.2px">Medera <span style="color:var(--brand-500)">Global</span></div>
+            <div style="font-family:Inter,system-ui;font-size:14px;color:#9fb0c7">Your gateway to world class doctors</div>
+          </div>
+          <div style="margin-top:12px;background:linear-gradient(135deg,var(--brand-500),var(--accent));height:2px;width:100%"></div>
+          <p><small>Use: website header, proposals, email signature.</small></p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <h3 style="margin-top:0">Colors</h3>
+        <p>Primary palette for Medera Global. Keep plenty of white space and use the accent sparingly for calls to action.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+          <div style="border:1px solid rgba(15,23,42,.08);border-radius:14px;overflow:hidden">
+            <div style="height:56px;background:var(--brand-500)"></div>
+            <div style="padding:10px"><strong>Teal 500</strong><br><code>#138A94</code></div>
+          </div>
+          <div style="border:1px solid rgba(15,23,42,.08);border-radius:14px;overflow:hidden">
+            <div style="height:56px;background:var(--brand-700)"></div>
+            <div style="padding:10px"><strong>Teal 700</strong><br><code>#0C636B</code></div>
+          </div>
+          <div style="border:1px solid rgba(15,23,42,.08);border-radius:14px;overflow:hidden">
+            <div style="height:56px;background:var(--accent)"></div>
+            <div style="padding:10px"><strong>Accent Blue</strong><br><code>#2F5BFF</code></div>
+          </div>
+          <div style="border:1px solid rgba(15,23,42,.08);border-radius:14px;overflow:hidden">
+            <div style="height:56px;background:#0F172A"></div>
+            <div style="padding:10px"><strong>Deep Navy</strong><br><code>#0F172A</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <h3 style="margin-top:0">Usage notes</h3>
+        <ul>
+          <li>Primary logo (cross) for digital small spaces and healthcare contexts.</li>
+          <li>MG monogram for brand-forward contexts and print.</li>
+          <li>Wordmark for headers and documents. Maintain generous spacing.</li>
+          <li>Minimum size: 24px for the symbol. Clear space: half the icon width around.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
