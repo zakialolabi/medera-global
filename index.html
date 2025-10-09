@@ -63,17 +63,34 @@
     .btn-sm{padding:10px 14px; font-size:14px; border-radius:12px}
     .card .btn{margin-top:12px}
 
+    /* Parallax */
+    .parallax{
+      position: relative;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      isolation: isolate;
+    }
+    .parallax::before{
+      content:"";
+      position:absolute; inset:0;
+      background: rgba(255,255,255,.74);
+      z-index:-1;
+    }
+    .parallax.dark::before{
+      background: rgba(8,15,30,.6);
+    }
+
     /* Hero */
     .hero{padding:72px 0 40px}
     .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
     .eyebrow{color:var(--brand-700);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
     h1{font-family: "Playfair Display", serif; font-size:56px; line-height:1.05; margin:10px 0 14px}
     .lead{font-size:18px;color:var(--muted);max-width:56ch;margin-bottom:24px}
-    .hero-card{background:linear-gradient(135deg, var(--brand-50), #fff); border:1px solid rgba(15,23,42,.08); padding:22px; border-radius:24px; box-shadow: var(--shadow)}
+    .hero-card{background:rgba(255,255,255,.9); border:1px solid rgba(15,23,42,.08); padding:22px; border-radius:24px; box-shadow: var(--shadow)}
 
-    /* Feature grid */
+    /* Sections & grid */
     .section{padding:72px 0}
-    .section.dark{background:var(--surface); color:#e6e9ef}
     .section h2{font-family: "Playfair Display", serif; font-size:40px; margin:0 0 12px}
     .kicker{color:var(--muted); margin:0 0 30px}
     .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px}
@@ -98,14 +115,13 @@
       h1{font-size:42px}
       .grid{grid-template-columns:1fr 1fr}
       .footer-grid{grid-template-columns:1fr 1fr}
+      .parallax{background-attachment: scroll;}
     }
     @media (max-width: 640px){
       .grid{grid-template-columns:1fr}
       .cta{flex-direction:column; align-items:flex-start}
       .nav-links{display:none}
-      .menu-btn{display:inline-flex}
     }
-    .menu-btn{display:none}
   </style>
 </head>
 <body>
@@ -117,6 +133,7 @@
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#features">Features</a>
+        <a href="#mission">Mission</a>
         <a href="#contact">Contact</a>
         <a class="btn btn-ghost" href="#cta">Get Started</a>
       </nav>
@@ -124,7 +141,7 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero parallax" style="background-image:url('https://unsplash.com/photos/LkNtMwoccz8/download?force=true&w=2000')">
       <div class="container hero-inner">
         <div>
           <div class="eyebrow">Trusted care. Clear guidance.</div>
@@ -143,7 +160,7 @@
       </div>
     </section>
 
-    <section id="features" class="section">
+    <section id="features" class="section parallax" style="background-image:url('https://unsplash.com/photos/o-P1z8NgLfU/download?force=true&w=2000')">
       <div class="container">
         <h2>Why choose Medera Global</h2>
         <p class="kicker">Four ways we support your care in Georgia.</p>
@@ -176,22 +193,45 @@
       </div>
     </section>
 
-    <section id="about" class="section dark">
+    <section id="about" class="section parallax dark" style="background-image:url('https://unsplash.com/photos/1alHxjAXTAY/download?force=true&w=2000'); color:#e6e9ef">
       <div class="container">
         <h2>About Medera Global</h2>
-        <p class="kicker" style="color:#b8c0d4">A human short story that builds credibility.</p>
+        <p class="kicker" style="color:#d1d7e7">Care coordination for international patients in Georgia.</p>
         <div class="grid" style="grid-template-columns:1.3fr .7fr">
           <div>
-            <p>Share who you are in two short paragraphs. Mention experience, what makes your service different, and a hint of your vision. Keep it clear and friendly.</p>
-            <p>Use social proof if you have it. Add logos, testimonials, or numbers such as customers served or money saved.</p>
+            <p>Medera Global is a Tbilisi based care coordination group that connects international patients with world class doctors at accredited hospitals and private clinics in Georgia. We turn a complex journey into a simple plan that begins with your first question and ends with your return home.</p>
+            <p>Your coordinator is a single point of contact for the entire pathway. We collect and translate medical records, schedule consultations, align specialists, and organise travel support when needed. During treatment we are present and responsive, so you never feel alone or uncertain about next steps.</p>
+            <p>Our partner network is chosen for clinical outcomes, safety, and clear communication. We work with teams that explain options plainly, respect your time, and focus on results that matter to you. Every case receives a tailored plan that reflects your health goals, budget, and timing.</p>
+            <p>Trust is built through clarity. You always know who is treating you, what is planned, and how decisions are made. Confidentiality is standard. Communication is available in English, German, Hebrew, and Russian. The goal is simple. Better care, fewer barriers, and a calm experience from consultation to full recovery.</p>
           </div>
-          <div class="card" style="background:#0b1225;color:#d8deea;border:1px solid rgba(255,255,255,.08)">
+          <div class="card" style="background:rgba(11,18,37,.9);color:#d8deea;border:1px solid rgba(255,255,255,.12)">
             <h3 style="margin-top:0">Quick facts</h3>
             <ul>
               <li>Founded in 2025 in Tbilisi</li>
-              <li>Based in Tbilisi</li>
-              <li>Remote friendly</li>
-              <li>Focused on delighting customers</li>
+              <li>Partner doctors at accredited clinics</li>
+              <li>Languages: English, German, Hebrew, Russian</li>
+              <li>Services: Dental, Urology, Wellness, Hair transplants</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission" class="section parallax" style="background-image:url('https://unsplash.com/photos/GDUQVkuDaOs/download?force=true&w=2000')">
+      <div class="container">
+        <h2>Our mission</h2>
+        <p class="kicker">Make world‑class medical care in Georgia simple, safe, and accessible for international patients.</p>
+        <div class="grid" style="grid-template-columns:1.2fr .8fr">
+          <div>
+            <p>We handle clinical and logistical coordination end to end: intake and records review, precise case matching, appointment scheduling, travel assistance, in‑clinic support, and post‑care follow‑up. Your coordinator keeps timelines moving and turns medical decisions into clear next steps.</p>
+            <p>Our network is built on outcomes and accreditation. We work only with doctors and clinics that meet rigorous standards for safety and communication, then align everyone around your goals—so your time goes into getting better, not navigating a system.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">What this means</h3>
+            <ul>
+              <li>One plan, one coordinator — from first call to recovery</li>
+              <li>Accredited clinics and proven doctors in Georgia</li>
+              <li>Plain‑language updates, privacy, and fast response times</li>
             </ul>
           </div>
         </div>
@@ -207,7 +247,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section parallax" style="background-image:url('https://unsplash.com/photos/hJWEBoYotfI/download?force=true&w=2000')">
       <div class="container">
         <h2>Contact</h2>
         <p class="kicker">Use a mailto link for now. Add a real form later when you pick a host.</p>
@@ -245,6 +285,7 @@
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#features">Features</a></li>
+          <li><a href="#mission">Mission</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
