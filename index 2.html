@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Medera Global — Health services in Georgia</title>
   <meta name="description" content="Medera Global connects you with world class doctors and accredited clinics in Georgia, from first consultation to full recovery." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{
       --brand-50:#ecf8f9;
@@ -26,330 +25,344 @@
       --surface:#fbfdfe;
       --radius:18px;
       --shadow:0 10px 30px rgba(0,0,0,.08);
-      --ring:0 0 0 4px rgba(19,138,148,.18);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0b1324;
-        --surface:#0e1a2f;
-        --text:#f3f6fa;
-        --muted:#b9c2d6;
-      }
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     body{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.65;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* Skip link */
-    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip:focus{left:16px;top:16px;width:auto;height:auto;background:#fff;color:#000;padding:10px 14px;border-radius:10px;box-shadow:var(--shadow)}
-
     /* Header */
     header{
-      position:sticky;top:0;z-index:50;
-      background:color-mix(in oklab, var(--bg) 92%, white 8%);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(15,23,42,.08);
+      position: sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(15,23,42,.06);
     }
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:inline-flex;align-items:center;gap:10px;font-weight:900}
-    .brand img{height:28px}
-    .nav-links{display:flex;gap:20px;align-items:center;font-weight:600}
+    .wordmark{font-weight:800; font-size:22px; letter-spacing:.2px; display:flex; gap:6px}
+    .wordmark .m{color:var(--text)} .wordmark .g{color:var(--brand-600)}
+    .nav-links{display:flex;gap:20px;align-items:center; font-weight:600}
     .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:14px;padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
     .btn-primary{background:var(--brand-600);color:#fff}
     .btn-sm{padding:10px 14px; font-size:14px; border-radius:12px}
-    .input{width:100%; border:1px solid rgba(15,23,42,.12); border-radius:12px; padding:12px 14px; background:var(--bg); color:var(--text)}
+    .input{width:100%; border:1px solid rgba(15,23,42,.12); border-radius:12px; padding:12px 14px}
 
-    /* Sections */
-    section{scroll-margin-top:76px}
+    /* Parallax + Motion */
+    .parallax-section{position:relative; overflow:hidden; min-height:60vh; display:flex; align-items:center}
+    .hero.parallax-section{min-height:100vh}
+    .parallax-bg{position:absolute; inset:-10% 0 -10% 0; z-index:0; will-change:transform}
+    .parallax-bg img{width:100%; height:120%; object-fit:cover; display:block}
+    .parallax-overlay{position:absolute; inset:0; z-index:1; background:rgba(10,22,35,.66)}
+    .parallax-content{position:relative; z-index:2; width:100%; color:#f3f6fa}
+    .parallax-content .muted{color:#d7deea}
+
+    /* Solid sections */
+    .solid{background: var(--surface); color: var(--text)}
+    .solid.alt{background: var(--brand-50)}
     .section{padding:72px 0}
     h1,h2,h3{font-weight:900; letter-spacing:-0.01em; margin:0}
-    h1{font-size:52px; line-height:1.05; margin-bottom:10px}
+    h1{font-size:52px; line-height:1.05; margin-bottom:12px}
     h2{font-size:36px; margin-bottom:10px}
     h3{font-size:20px}
-    .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+    .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px; opacity:.95}
     .lead{font-size:18px;color:var(--muted);max-width:56ch;margin:10px 0 22px}
-
-    /* Alternating sections */
-    .image-section{position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center;color:#f3f6fa}
-    .image-section .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,15,30,.68), rgba(8,15,30,.58))}
-    .image-section .bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%}
-    .image-section .content{position:relative;z-index:1;width:100%}
-    .solid{background:var(--surface)}
-    .solid.alt{background:var(--brand-50)}
+    .lead.light{color:#d7deea}
+    .kicker{color:var(--muted); margin:0 0 30px}
 
     /* Grid & cards */
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px}
-    .two{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center}
-    .card{background:var(--bg); border:1px solid rgba(15,23,42,.08); border-radius:18px; padding:22px; box-shadow:var(--shadow)}
-    .icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--brand-100);margin-bottom:10px}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px}
+    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+    .card{background:#fff; border:1px solid rgba(15,23,42,.08); border-radius:18px; padding:22px; box-shadow:var(--shadow)}
+
+    .icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--brand-100);margin-bottom:12px;font-size:22px}
+    .mutetext{color:var(--muted)}
 
     /* Motion */
     .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
     .reveal.in{opacity:1; transform:none}
+    .reveal-delay-1{transition-delay:.08s}
+    .reveal-delay-2{transition-delay:.16s}
     .reveal-x{opacity:0; transform:translateX(-18px); transition:opacity .6s ease, transform .6s ease}
     .reveal-x.in{opacity:1; transform:none}
-    @media (prefers-reduced-motion: reduce){
-      .reveal,.reveal-x{opacity:1;transform:none}
+
+    /* Modal */
+    .modal-backdrop{position:fixed; inset:0; background:rgba(8,15,30,.6); display:none; align-items:center; justify-content:center; z-index:80}
+    .modal{background:#fff; color:var(--text); width:min(820px, 94vw); border-radius:22px; box-shadow:0 20px 60px rgba(0,0,0,.25); border:1px solid rgba(15,23,42,.08); max-height:90vh; overflow:auto}
+    .modal header{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid rgba(15,23,42,.08); position:sticky; top:0; background:#fff; border-radius:22px 22px 0 0}
+    .modal h3{margin:0; font-size:22px; font-weight:800}
+    .modal .content{padding:18px}
+    .modal .grid-ops{display:grid; grid-template-columns:1fr; gap:10px}
+    .chip{display:block; background:var(--brand-50); border:1px solid var(--brand-200); padding:10px 12px; border-radius:12px; font-weight:600}
+    .close{appearance:none;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer;border-radius:10px;padding:4px 8px}
+    .close:hover{background:#f3f6fa}
+
+    /* Readability tweaks for both About and Mission */
+    #about .parallax-overlay,
+    #mission .parallax-overlay{
+      background: linear-gradient(180deg, rgba(8,15,30,.78), rgba(8,15,30,.68));
     }
+    #about .parallax-content,
+    #mission .parallax-content{
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    }
+    #about .parallax-content .lead,
+    #about .parallax-content p,
+    #mission .parallax-content .lead,
+    #mission .parallax-content p{
+      max-width: 68ch;
+      line-height: 1.75;
+      font-size: 18px; /* unify body text size */
+    }
+    #about h2, #mission h2{ font-size: 36px; } /* unify heading size */
 
     /* Footer */
-    footer{padding:46px 0; color:color-mix(in oklab, var(--text), #6b7280 60%)}
+    footer{padding:46px 0; color:#6b7280}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr; gap:20px}
 
     /* Responsive */
     @media (max-width: 980px){
-      .two{grid-template-columns:1fr}
+      .hero-inner{grid-template-columns:1fr}
       h1{font-size:40px}
-      .grid{grid-template-columns:1fr 1fr}
       .footer-grid{grid-template-columns:1fr 1fr}
     }
     @media (max-width: 640px){
-      .grid{grid-template-columns:1fr}
       .nav-links{display:none}
+      .grid{grid-template-columns:1fr}
     }
   </style>
+
+  
+  <style id="about-mission-unify">
+    /* Identical vertical padding for both parallax sections */
+    #about .parallax-content .container,
+    #mission .parallax-content .container{
+      padding-top: 88px;
+      padding-bottom: 88px;
+    }
+    /* Ensure single full-width column */
+    #about .parallax-content .grid,
+    #mission .parallax-content .grid{
+      grid-template-columns: 1fr !important;
+    }
+    /* Stretch copy to container width */
+    #about .parallax-content p,
+    #about .parallax-content .lead,
+    #mission .parallax-content p,
+    #mission .parallax-content .lead{
+      max-width: none !important;
+      width: 100%;
+    }
+    /* Normalize first and last-child margins so total spacing matches */
+    #about .parallax-content .container > *:first-child,
+    #mission .parallax-content .container > *:first-child{ margin-top: 0 !important; }
+    #about .parallax-content .container > *:last-child,
+    #mission .parallax-content .container > *:last-child{ margin-bottom: 0 !important; }
+  </style>
+
+
+
+  <style id="about-mission-hard-equalize">
+    /* Enforce identical top/bottom padding */
+    #about .parallax-content .container,
+    #mission .parallax-content .container{
+      padding-top: 96px !important;
+      padding-bottom: 96px !important;
+    }
+    /* Remove extra space caused by inner element margins */
+    #about .parallax-content .container > *:first-child,
+    #mission .parallax-content .container > *:first-child{ margin-top: 0 !important; }
+    #about .parallax-content .container > *:last-child,
+    #mission .parallax-content .container > *:last-child{ margin-bottom: 0 !important; }
+    /* Ensure the grid itself doesn't add extra bottom spacing */
+    #about .parallax-content .grid,
+    #mission .parallax-content .grid{ margin-bottom: 0 !important; }
+    /* Make all paragraphs use consistent bottom margin so totals match exactly */
+    #about .parallax-content p,
+    #mission .parallax-content p{
+      margin-top: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    /* Remove bottom margin from the last paragraph for both sections */
+    #about .parallax-content .grid > div > p:last-of-type,
+    #mission .parallax-content .grid > div > p:last-of-type{ margin-bottom: 0 !important; }
+  </style>
+
+
+  <style id="about-mission-pixel-match">
+    /* Remove any extra height beyond content for About and Mission */
+    #about.parallax-section, #mission.parallax-section{
+      min-height: auto !important;
+      margin-bottom: 0 !important;
+    }
+    /* Ensure the image background still fills the section height */
+    #about .parallax-bg img, #mission .parallax-bg img{
+      height: 100% !important;
+    }
+    /* Identical container padding top/bottom */
+    #about .parallax-content .container,
+    #mission .parallax-content .container{
+      padding-top: 100px !important;
+      padding-bottom: 100px !important;
+    }
+    /* Normalize internal margins to avoid extra bottom space */
+    #about .parallax-content .container > *:first-child,
+    #mission .parallax-content .container > *:first-child{ margin-top: 0 !important; }
+    #about .parallax-content .container > *:last-child,
+    #mission .parallax-content .container > *:last-child{ margin-bottom: 0 !important; }
+    #about .parallax-content p:last-of-type,
+    #mission .parallax-content p:last-of-type{ margin-bottom: 0 !important; }
+    /* Remove top margin on the section after Mission to prevent a perceived gap */
+    #contact.section{ margin-top: 0 !important; }
+  </style>
+
 </head>
 <body>
-  <a href="#main" class="skip">Skip to content</a>
-  <header role="banner">
+  <header>
     <div class="container nav">
-      <a href="#" class="brand" aria-label="Medera Global home">
-        <img src="medera-global-wordmark.svg" alt="Medera Global" onerror="this.replaceWith(Object.assign(document.createElement('strong'),{textContent:'Medera Global'}));">
-      </a>
-      <nav class="nav-links" aria-label="Primary">
+      <div class="wordmark"><span class="m">Medera</span> <span class="g">Global</span></div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#doctors">Doctors</a>
-        <a href="#about">About</a>
         <a href="#mission">Mission</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="main">
-    <!-- IMAGE: HERO -->
-    <section class="image-section" aria-labelledby="hero-title">
-      <img class="bg" alt="" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2200&auto=format&fit=crop">
-      <div class="overlay" aria-hidden="true"></div>
-      <div class="content">
-        <div class="container two">
+  <main>
+    <!-- HERO -->
+    <section class="hero parallax-section" data-speed="0.25">
+      <div class="parallax-bg"><img alt="Patient consulting with doctor" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2200&auto=format&fit=crop" /></div>
+      <div class="parallax-overlay"></div>
+      <div class="parallax-content">
+        <div class="container hero-inner">
           <div class="reveal">
-            <p class="eyebrow">Trusted care. Clear guidance.</p>
-            <h1 id="hero-title">Your gateway to world class doctors</h1>
-            <p class="lead" style="color:#d7deea">World class doctors, from first consultation to full recovery.</p>
+            <div class="eyebrow">Trusted care. Clear guidance.</div>
+            <h1>Your gateway to world class doctors</h1>
+            <p class="lead light">World class doctors, from first consultation to full recovery.</p>
             <div style="display:flex; gap:12px; flex-wrap:wrap">
-              <a class="btn btn-primary" href="#contact">Start now</a>
               <a class="btn" style="background:#ffffff; color:var(--text)" href="#services">See services</a>
             </div>
           </div>
-          <div class="reveal-x">
-            <div class="card" role="img" aria-label="Clinical team">
-              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop" alt="Clinical team working together" style="border-radius:12px">
+          <div class="reveal-x reveal-delay-2">
+            <div class="card" style="background:rgba(255,255,255,.96)">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop" alt="Clinical team" style="border-radius:14px">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SOLID: SERVICES -->
-    <section id="services" class="section solid" aria-labelledby="services-title">
+    <!-- SERVICES (UROLOGY ONLY) -->
+    <section id="services" class="section solid">
       <div class="container">
-        <h2 id="services-title" class="reveal">Our services</h2>
-        <p class="lead reveal">Four ways we support your care in Georgia.</p>
-        <div class="grid" role="list">
-          <div class="card reveal" role="listitem">
-            <div class="icon" aria-hidden="true">🦷</div>
-            <h3>Dental care</h3>
-            <p>Implants, crowns, veneers, and smile design with accredited clinics in Tbilisi and Batumi.</p>
-            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
-          </div>
-          <div class="card reveal" role="listitem">
-            <div class="icon" aria-hidden="true">🏥</div>
-            <h3>Prostatectomy</h3>
-            <p>Coordination with experienced urology teams, hospital stay support, and recovery planning.</p>
-            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
-          </div>
-          <div class="card reveal" role="listitem">
-            <div class="icon" aria-hidden="true">🌿</div>
-            <h3>Wellness</h3>
-            <p>Preventive checkups, diagnostics, and curated wellness programs tailored to your goals.</p>
-            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
-          </div>
-          <div class="card reveal" role="listitem">
-            <div class="icon" aria-hidden="true">💇‍♂️</div>
-            <h3>Hair transplants</h3>
-            <p>FUE and DHI techniques with leading surgeons, plus pre and post-procedure guidance.</p>
-            <a class="btn btn-primary btn-sm" href="#contact">Contact for this service</a>
-          </div>
+        <h2 class="reveal">Our services</h2>
+        <p class="kicker reveal reveal-delay-1">We currently focus on urology and are expanding to other specialties soon.</p>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">🏥</div>
+          <h3>Urology</h3>
+          <p class="mutetext">We coordinate advanced urological surgeries and treatments in Tbilisi, with top international surgeons and leading local hospitals.</p>
+          <button class="btn btn-primary btn-sm" id="openOps" style="margin-top:8px">Click to view procedures</button>
+          <p style="margin-top:12px; font-weight:700; color:var(--brand-700)">More specialties coming soon!</p>
         </div>
       </div>
     </section>
 
-    <!-- IMAGE: ABOUT -->
-    <section id="about" class="image-section" aria-labelledby="about-title">
-      <img class="bg" alt="" src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=2200&auto=format&fit=crop">
-      <div class="overlay" aria-hidden="true"></div>
-      <div class="content">
+    <!-- DOCTORS (MESSAGE WINDOW) -->
+    <section id="doctors" class="section solid alt">
+      <div class="container">
+        <h2 class="reveal">Our doctors</h2>
+        <div class="card reveal" style="margin-top:12px">
+          <p style="margin:0;font-weight:600">We are bringing top world leading surgen to Tbilissi. In the future, you could find details about them here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="parallax-section" data-speed="0.18">
+      <div class="parallax-bg"><img alt="Operating room" src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=2200&auto=format&fit=crop" /></div>
+      <div class="parallax-overlay"></div>
+      <div class="parallax-content">
         <div class="container">
-          <h2 id="about-title" class="reveal">About Medera Global</h2>
-          <p class="lead reveal" style="color:#d7deea">Care coordination for international patients in Georgia.</p>
-          <div class="two">
+          <h2 class="reveal">About Medera Global</h2>
+          <div class="grid" style="grid-template-columns: 1fr ">
             <div class="reveal">
-              <p>Medera Global is a Tbilisi based care coordination group that connects international patients with world class doctors at accredited hospitals and private clinics in Georgia. We turn a complex journey into a simple plan that begins with your first question and ends with your return home.</p>
-              <p>Your coordinator is a single point of contact for the entire pathway. We collect and translate medical records, schedule consultations, align specialists, and organise travel support when needed. During treatment we are present and responsive, so you never feel alone or uncertain about next steps.</p>
-              <p>Our partner network is chosen for clinical outcomes, safety, and clear communication. We work with teams that explain options plainly, respect your time, and focus on results that matter to you. Every case receives a tailored plan that reflects your health goals, budget, and timing.</p>
-              <p>Trust is built through clarity. You always know who is treating you, what is planned, and how decisions are made. Confidentiality is standard. Communication is available in English, German, Hebrew, and Russian. The goal is simple. Better care, fewer barriers, and a calm experience from consultation to full recovery.</p>
+              <p>Medera Global brings international patients together with outstanding surgeons from around the world. We bring top doctors to perform surgeries and provide care in Tbilisi. Patients from countries with limited access to advanced procedures can finally receive the treatments they need.</p>
+              <p>We work only with the best hospitals and private clinics in Tbilisi, selected for their medical standards, safety, and reliability. Each case is matched to the right setting and specialists, depending on the medical needs.</p>
+              <p>Our team coordinates the entire process. We collect and translate medical documents, schedule consultations, align treatment plans, and provide local support when needed. From your first question to full recovery, we stay by your side.</p>
+              <p>Communication is available in English, Hebrew, Russian, and Georgian.<br>
+              Our goal is clear. To make world class care possible, accessible, and smooth for every patient who needs it.</p>
             </div>
-            <aside class="card reveal-x" aria-label="Quick facts">
-              <h3 style="margin-top:0">Quick facts</h3>
-              <ul>
-                <li>Founded in 2025 in Tbilisi</li>
-                <li>Partner doctors at accredited clinics</li>
-                <li>Languages: EN, DE, HE, RU</li>
-                <li>Services: Dental, Urology, Wellness, Hair transplants</li>
-              </ul>
-            </aside>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SOLID: DOCTORS -->
-    <section id="doctors" class="section solid alt" aria-labelledby="doctors-title">
-      <div class="container">
-        <h2 id="doctors-title" class="reveal">Our doctors</h2>
-        <p class="lead reveal">A growing network of specialists in Georgia. Add your partners here.</p>
-        <div class="grid" role="list">
-          <article class="card reveal" role="listitem" aria-labelledby="doc1">
-            <div style="display:flex; gap:14px; align-items:center">
-              <div style="width:64px;height:64px;border-radius:14px;overflow:hidden;background:#eef5f6">
-                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=300&auto=format&fit=crop" alt="" />
-              </div>
-              <div>
-                <h3 id="doc1" style="margin:0 0 4px">Dr. Firstname Lastname</h3>
-                <div class="muted">Urology • Tbilisi</div>
-                <div class="muted">Languages: EN, RU</div>
-              </div>
-            </div>
-            <p style="margin-top:12px">Short bio about clinical focus, years of experience, and accreditation. Replace with your partner details.</p>
-            <a class="btn btn-primary btn-sm" href="#contact">Request appointment</a>
-          </article>
-          <article class="card reveal" role="listitem" aria-labelledby="doc2">
-            <div style="display:flex; gap:14px; align-items:center">
-              <div style="width:64px;height:64px;border-radius:14px;overflow:hidden;background:#eef5f6">
-                <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=300&auto=format&fit=crop" alt="" />
-              </div>
-              <div>
-                <h3 id="doc2" style="margin:0 0 4px">Dr. Firstname Lastname</h3>
-                <div class="muted">Dentistry • Batumi</div>
-                <div class="muted">Languages: EN, GE</div>
-              </div>
-            </div>
-            <p style="margin-top:12px">Short bio about clinical focus, years of experience, and accreditation. Replace with your partner details.</p>
-            <a class="btn btn-primary btn-sm" href="#contact">Request appointment</a>
-          </article>
-          <article class="card reveal" role="listitem" aria-labelledby="doc3">
-            <div style="display:flex; gap:14px; align-items:center">
-              <div style="width:64px;height:64px;border-radius:14px;overflow:hidden;background:#eef5f6">
-                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=300&auto=format&fit=crop" alt="" />
-              </div>
-              <div>
-                <h3 id="doc3" style="margin:0 0 4px">Dr. Firstname Lastname</h3>
-                <div class="muted">Wellness • Tbilisi</div>
-                <div class="muted">Languages: EN, DE</div>
-              </div>
-            </div>
-            <p style="margin-top:12px">Short bio about clinical focus, years of experience, and accreditation. Replace with your partner details.</p>
-            <a class="btn btn-primary btn-sm" href="#contact">Request appointment</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- IMAGE: MISSION -->
-    <section id="mission" class="image-section" aria-labelledby="mission-title">
-      <img class="bg" alt="" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2200&auto=format&fit=crop">
-      <div class="overlay" aria-hidden="true"></div>
-      <div class="content">
+    <!-- MISSION -->
+    <section id="mission" class="parallax-section" data-speed="0.16">
+      <div class="parallax-bg"><img alt="Doctors walking" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2200&auto=format&fit=crop" /></div>
+      <div class="parallax-overlay"></div>
+      <div class="parallax-content">
         <div class="container">
-          <h2 id="mission-title" class="reveal">Our mission</h2>
-          <p class="lead reveal" style="color:#d7deea">Make world‑class medical care in Georgia simple, safe, and accessible for international patients.</p>
-          <div class="two">
+          <h2 class="reveal">Our mission</h2>
+          <div class="grid" style="grid-template-columns: 1fr ">
             <div class="reveal">
-              <p>We handle clinical and logistical coordination end to end: intake and records review, precise case matching, appointment scheduling, travel assistance, in‑clinic support, and post‑care follow‑up. Your coordinator keeps timelines moving and turns medical decisions into clear next steps.</p>
-              <p>Our network is built on outcomes and accreditation. We work only with doctors and clinics that meet rigorous standards for safety and communication, then align everyone around your goals—so your time goes into getting better, not navigating a system.</p>
+              <p>We believe that access to excellent healthcare should not depend on where you live. Medera Global brings together top surgeons and the best clinics in Tbilisi to make high-quality treatment available to patients from around the world.</p>
+              <p>Beyond individual journeys, we are building a system that opens long-term access to care, so more people can get the treatment they need, when they need it.</p>
+              <p>We focus on simplicity, safety, and support, so your energy goes into healing.</p>
             </div>
-            <aside class="card reveal-x" aria-label="What this means">
-              <h3 style="margin-top:0">What this means</h3>
-              <ul>
-                <li>One plan, one coordinator — from first call to recovery</li>
-                <li>Accredited clinics and proven doctors in Georgia</li>
-                <li>Plain‑language updates, privacy, and fast response times</li>
-              </ul>
-            </aside>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SOLID: CONTACT -->
-    <section id="contact" class="section solid" aria-labelledby="contact-title">
+    <!-- CONTACT -->
+    <section id="contact" class="section solid">
       <div class="container">
-        <h2 id="contact-title" class="reveal">Contact</h2>
-        <p class="lead reveal">Use a mailto link for now. Add a real form later when you pick a host.</p>
-        <div class="two">
-          <form onsubmit="window.location.href='mailto:contact@mederaglobal.com?subject=Inquiry'; return false;" aria-label="Contact form">
+        <h2 class="reveal">Contact</h2>
+        <p class="kicker reveal reveal-delay-1">Use a mailto link for now. Add a real form later when you pick a host.</p>
+        <div class="grid" style="grid-template-columns:1fr .7fr">
+          <form onsubmit="window.location.href='mailto:contact@mederaglobal.com?subject=Inquiry'; return false;">
             <div style="display:grid;gap:12px;max-width:520px">
-              <label>
-                <span class="visually-hidden">Your name</span>
-                <input class="input" type="text" name="name" placeholder="Your name" required>
-              </label>
-              <label>
-                <span class="visually-hidden">Your email</span>
-                <input class="input" type="email" name="email" placeholder="Your email" required>
-              </label>
-              <label>
-                <span class="visually-hidden">Tell us a bit about your needs</span>
-                <textarea class="input" rows="5" name="message" placeholder="Tell us a bit about your needs"></textarea>
-              </label>
+              <input class="input" type="text" placeholder="Your name" required>
+              <input class="input" type="email" placeholder="Your email" required>
+              <textarea class="input" rows="5" placeholder="Tell us a bit about your needs"></textarea>
               <button class="btn btn-primary" type="submit">Email us</button>
             </div>
           </form>
-          <aside>
+          <div>
             <div class="card reveal-x">
               <h3 style="margin-top:0">Company</h3>
-              <p>Rustaveli Ave 1<br>0108 Tbilisi<br>Tbilisi, Georgia</p>
               <p><a href="mailto:contact@mederaglobal.com">contact@mederaglobal.com</a></p>
             </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer role="contentinfo">
+  <footer>
     <div class="container footer-grid">
       <div>
-        <strong>Medera Global</strong><br>
+        <div class="wordmark" style="margin-bottom:8px"><span class="m">Medera</span> <span class="g">Global</span></div>
         <small>© <span id="y"></span> Medera Global. All rights reserved.</small>
       </div>
       <div>
         <strong>Pages</strong>
         <ul>
+          <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#doctors">Doctors</a></li>
-          <li><a href="#about">About</a></li>
           <li><a href="#mission">Mission</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -365,15 +378,67 @@
     </div>
   </footer>
 
+  <!-- Modal for common urology operations -->
+  <div class="modal-backdrop" id="opsModal" role="dialog" aria-modal="true" aria-labelledby="opsTitle" aria-hidden="true">
+    <div class="modal">
+      <header>
+        <h3 id="opsTitle">Common urology procedures</h3>
+        <button class="close" id="closeOps" aria-label="Close">×</button>
+      </header>
+      <div class="content">
+        <div class="grid-ops">
+          <span class="chip">Robotic or laparoscopic prostatectomy</span>
+          <span class="chip">Kidney stone removal (PCNL, ureteroscopy)</span>
+          <span class="chip">Bladder cancer surgery (TURBT, cystectomy)</span>
+          <span class="chip">Urethral stricture repair</span>
+          <span class="chip">Hydrocele and varicocele surgery</span>
+          <span class="chip">Male infertility procedures (e.g. TESE, varicocelectomy)</span>
+          <span class="chip">Transurethral resection of the prostate (TURP)</span>
+          <span class="chip">Nephrectomy (partial or radical)</span>
+          <span class="chip">Penile prosthesis implantation</span>
+          <span class="chip">Prostate, bladder, and kidney biopsies</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Reveal on view
+    // Motion on view
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
     }, {threshold: 0.15});
     document.querySelectorAll('.reveal, .reveal-x').forEach(el=>io.observe(el));
+
+    // Parallax
+    const sections = document.querySelectorAll('.parallax-section');
+    function parallax(){
+      const scrollY = window.scrollY || window.pageYOffset;
+      sections.forEach(sec=>{
+        const speed = parseFloat(sec.getAttribute('data-speed')||0.2);
+        const rect = sec.getBoundingClientRect();
+        const offsetTop = rect.top + scrollY;
+        const y = (scrollY - offsetTop) * speed;
+        const bg = sec.querySelector('.parallax-bg');
+        if(bg){ bg.style.transform = `translate3d(0, ${y}px, 0)`; }
+      });
+    }
+    parallax();
+    window.addEventListener('scroll', parallax, {passive:true});
+    window.addEventListener('resize', parallax);
+
+    // Modal open/close
+    const openOps = document.getElementById('openOps');
+    const closeOps = document.getElementById('closeOps');
+    const opsModal = document.getElementById('opsModal');
+    function openModal(){ opsModal.style.display = 'flex'; opsModal.setAttribute('aria-hidden','false'); }
+    function closeModal(){ opsModal.style.display = 'none'; opsModal.setAttribute('aria-hidden','true'); }
+    openOps?.addEventListener('click', openModal);
+    closeOps?.addEventListener('click', closeModal);
+    opsModal?.addEventListener('click', (e)=>{ if(e.target === opsModal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
