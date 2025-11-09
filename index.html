@@ -82,6 +82,7 @@
     .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px}
     .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
     .card{background:#fff; border:1px solid rgba(15,23,42,.08); border-radius:18px; padding:22px; box-shadow:var(--shadow)}
+
     .icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--brand-100);margin-bottom:12px;font-size:22px}
     .mutetext{color:var(--muted)}
 
@@ -104,6 +105,25 @@
     .close{appearance:none;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer;border-radius:10px;padding:4px 8px}
     .close:hover{background:#f3f6fa}
 
+    /* Readability tweaks for both About and Mission */
+    #about .parallax-overlay,
+    #mission .parallax-overlay{
+      background: linear-gradient(180deg, rgba(8,15,30,.78), rgba(8,15,30,.68));
+    }
+    #about .parallax-content,
+    #mission .parallax-content{
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    }
+    #about .parallax-content .lead,
+    #about .parallax-content p,
+    #mission .parallax-content .lead,
+    #mission .parallax-content p{
+      max-width: 68ch;
+      line-height: 1.75;
+      font-size: 18px; /* unify body text size */
+    }
+    #about h2, #mission h2{ font-size: 36px; } /* unify heading size */
+
     /* Footer */
     footer{padding:46px 0; color:#6b7280}
     .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr; gap:20px}
@@ -120,24 +140,106 @@
     }
   </style>
 
-  <style id="about-readability-tweaks">
-    /* About section readability tweaks */
-    #about .parallax-overlay{
-      background: linear-gradient(180deg, rgba(8,15,30,.78), rgba(8,15,30,.68));
+  
+  <style id="about-mission-unify">
+    /* Identical vertical padding for both parallax sections */
+    #about .parallax-content .container,
+    #mission .parallax-content .container{
+      padding-top: 88px;
+      padding-bottom: 88px;
     }
-    #about .parallax-content{
-      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    /* Ensure single full-width column */
+    #about .parallax-content .grid,
+    #mission .parallax-content .grid{
+      grid-template-columns: 1fr !important;
     }
+    /* Stretch copy to container width */
+    #about .parallax-content p,
     #about .parallax-content .lead,
-    #about .parallax-content p{
-      max-width: 68ch;
-      line-height: 1.75;
+    #mission .parallax-content p,
+    #mission .parallax-content .lead{
+      max-width: none !important;
+      width: 100%;
+    }
+    /* Normalize first and last-child margins so total spacing matches */
+    #about .parallax-content .container > *:first-child,
+    #mission .parallax-content .container > *:first-child{ margin-top: 0 !important; }
+    #about .parallax-content .container > *:last-child,
+    #mission .parallax-content .container > *:last-child{ margin-bottom: 0 !important; }
+  </style>
+
+
+
+  <style id="about-mission-hard-equalize">
+    /* Enforce identical top/bottom padding */
+    #about .parallax-content .container,
+    #mission .parallax-content .container{
+      padding-top: 96px !important;
+      padding-bottom: 96px !important;
+    }
+    /* Remove extra space caused by inner element margins */
+    #about .parallax-content .container > *:first-child,
+    #mission .parallax-content .container > *:first-child{ margin-top: 0 !important; }
+    #about .parallax-content .container > *:last-child,
+    #mission .parallax-content .container > *:last-child{ margin-bottom: 0 !important; }
+    /* Ensure the grid itself doesn't add extra bottom spacing */
+    #about .parallax-content .grid,
+    #mission .parallax-content .grid{ margin-bottom: 0 !important; }
+    /* Make all paragraphs use consistent bottom margin so totals match exactly */
+    #about .parallax-content p,
+    #mission .parallax-content p{
+      margin-top: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    /* Remove bottom margin from the last paragraph for both sections */
+    #about .parallax-content .grid > div > p:last-of-type,
+    #mission .parallax-content .grid > div > p:last-of-type{ margin-bottom: 0 !important; }
+  </style>
+
+
+  <style id="about-mission-pixel-match">
+    /* Remove any extra height beyond content for About and Mission */
+    #about.parallax-section, #mission.parallax-section{
+      min-height: auto !important;
+      margin-bottom: 0 !important;
+    }
+    /* Ensure the image background still fills the section height */
+    #about .parallax-bg img, #mission .parallax-bg img{
+      height: 100% !important;
+    }
+    /* Identical container padding top/bottom */
+    #about .parallax-content .container,
+    #mission .parallax-content .container{
+      padding-top: 100px !important;
+      padding-bottom: 100px !important;
+    }
+    /* Normalize internal margins to avoid extra bottom space */
+    #about .parallax-content .container > *:first-child,
+    #mission .parallax-content .container > *:first-child{ margin-top: 0 !important; }
+    #about .parallax-content .container > *:last-child,
+    #mission .parallax-content .container > *:last-child{ margin-bottom: 0 !important; }
+    #about .parallax-content p:last-of-type,
+    #mission .parallax-content p:last-of-type{ margin-bottom: 0 !important; }
+    /* Remove top margin on the section after Mission to prevent a perceived gap */
+    #contact.section{ margin-top: 0 !important; }
+  </style>
+
+
+  <style id="about-mission-fixed-heights">
+    /* Lock equal section heights */
+    #about.parallax-section, #mission.parallax-section{
+      min-height: 560px !important;
+    }
+    @media (max-width: 980px){
+      #about.parallax-section, #mission.parallax-section{ min-height: 520px !important; }
     }
     @media (max-width: 640px){
-      #about .parallax-content .lead,
-      #about .parallax-content p{ line-height: 1.8; }
+      #about.parallax-section, #mission.parallax-section{ min-height: 460px !important; }
     }
   </style>
+
+
+  <style id="mission-bg-tune">#mission .parallax-bg img{object-position:center 45% !important;}</style>
 
 </head>
 <body>
@@ -210,8 +312,7 @@
       <div class="parallax-content">
         <div class="container">
           <h2 class="reveal">About Medera Global</h2>
-          <p class="lead light reveal reveal-delay-1">Care coordination for international patients in Georgia.</p>
-          <div class="grid" style="grid-template-columns:1fr">
+          <div class="grid" style="grid-template-columns: 1fr ">
             <div class="reveal">
               <p>Medera Global brings international patients together with outstanding surgeons from around the world. We bring top doctors to perform surgeries and provide care in Tbilisi. Patients from countries with limited access to advanced procedures can finally receive the treatments they need.</p>
               <p>We work only with the best hospitals and private clinics in Tbilisi, selected for their medical standards, safety, and reliability. Each case is matched to the right setting and specialists, depending on the medical needs.</p>
@@ -220,25 +321,25 @@
               Our goal is clear. To make world class care possible, accessible, and smooth for every patient who needs it.</p>
             </div>
           </div>
-</div>
+        </div>
       </div>
     </section>
 
     <!-- MISSION -->
     <section id="mission" class="parallax-section" data-speed="0.16">
-      <div class="parallax-bg"><img alt="Doctors walking" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2200&auto=format&fit=crop" /></div>
+      <div class="parallax-bg"><img alt="Doctors walking" src="https://images.unsplash.com/photo-1580281657527-47e90d952c2c?q=80&w=2200&auto=format&fit=crop" /></div>
       <div class="parallax-overlay"></div>
       <div class="parallax-content">
         <div class="container">
           <h2 class="reveal">Our mission</h2>
-          <div class="grid" style="grid-template-columns:1fr">
+          <div class="grid" style="grid-template-columns: 1fr ">
             <div class="reveal">
-              <p class="lead light">We believe that access to excellent healthcare should not depend on where you live. Medera Global brings together top surgeons and the best clinics in Tbilisi to make high-quality treatment available to patients from around the world.</p>
-              <p class="lead light">Beyond individual journeys, we are building a system that opens long-term access to care, so more people can get the treatment they need, when they need it.</p>
-              <p class="lead light">We focus on simplicity, safety, and support, so your energy goes into healing.</p>
+              <p>We believe that access to excellent healthcare should not depend on where you live. Medera Global brings together top surgeons and the best clinics in Tbilisi to make high-quality treatment available to patients from around the world.</p>
+              <p>Beyond individual journeys, we are building a system that opens long-term access to care, so more people can get the treatment they need, when they need it.</p>
+              <p>We focus on simplicity, safety, and support, so your energy goes into healing.</p>
             </div>
           </div>
-</div>
+        </div>
       </div>
     </section>
 
