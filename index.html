@@ -19,14 +19,12 @@
       --brand-700:#0c636b;
       --brand-800:#0a4f55;
       --brand-900:#083f43;
-      --accent:#2f5bff;
       --text:#0b1324;
       --muted:#3f4b63;
       --bg:#ffffff;
       --surface:#fbfdfe;
-      --ring: rgba(19, 138, 148, .35);
-      --radius: 18px;
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -84,7 +82,6 @@
     .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px}
     .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
     .card{background:#fff; border:1px solid rgba(15,23,42,.08); border-radius:18px; padding:22px; box-shadow:var(--shadow)}
-
     .icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--brand-100);margin-bottom:12px;font-size:22px}
     .mutetext{color:var(--muted)}
 
@@ -96,14 +93,14 @@
     .reveal-x{opacity:0; transform:translateX(-18px); transition:opacity .6s ease, transform .6s ease}
     .reveal-x.in{opacity:1; transform:none}
 
-    /* Modal window */
-    .modal-backdrop{position:fixed; inset:0; background:rgba(8,15,30,.6); display:none; align-items:center; justify-content:center; z-index:60}
-    .modal{background:#fff; color:var(--text); width:min(820px, 94vw); border-radius:22px; box-shadow:0 20px 60px rgba(0,0,0,.25); border:1px solid rgba(15,23,42,.08)}
+    /* Modal */
+    .modal-backdrop{position:fixed; inset:0; background:rgba(8,15,30,.6); display:none; align-items:center; justify-content:center; z-index:80}
+    .modal{background:#fff; color:var(--text); width:min(820px, 94vw); border-radius:22px; box-shadow:0 20px 60px rgba(0,0,0,.25); border:1px solid rgba(15,23,42,.08); max-height:90vh; overflow:auto}
     .modal header{display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border-bottom:1px solid rgba(15,23,42,.08); position:sticky; top:0; background:#fff; border-radius:22px 22px 0 0}
     .modal h3{margin:0; font-size:22px; font-weight:800}
     .modal .content{padding:18px}
-    .modal .grid-ops{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px}
-    .chip{display:inline-block; background:var(--brand-50); border:1px solid var(--brand-200); padding:10px 12px; border-radius:12px; font-weight:600}
+    .modal .grid-ops{display:grid; grid-template-columns:1fr; gap:10px}
+    .chip{display:block; background:var(--brand-50); border:1px solid var(--brand-200); padding:10px 12px; border-radius:12px; font-weight:600}
     .close{appearance:none;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer;border-radius:10px;padding:4px 8px}
     .close:hover{background:#f3f6fa}
 
@@ -122,6 +119,26 @@
       .grid{grid-template-columns:1fr}
     }
   </style>
+
+  <style id="about-readability-tweaks">
+    /* About section readability tweaks */
+    #about .parallax-overlay{
+      background: linear-gradient(180deg, rgba(8,15,30,.78), rgba(8,15,30,.68));
+    }
+    #about .parallax-content{
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    }
+    #about .parallax-content .lead,
+    #about .parallax-content p{
+      max-width: 68ch;
+      line-height: 1.75;
+    }
+    @media (max-width: 640px){
+      #about .parallax-content .lead,
+      #about .parallax-content p{ line-height: 1.8; }
+    }
+  </style>
+
 </head>
 <body>
   <header>
@@ -149,7 +166,6 @@
             <h1>Your gateway to world class doctors</h1>
             <p class="lead light">World class doctors, from first consultation to full recovery.</p>
             <div style="display:flex; gap:12px; flex-wrap:wrap">
-              <a class="btn btn-primary" href="#contact">Start now</a>
               <a class="btn" style="background:#ffffff; color:var(--text)" href="#services">See services</a>
             </div>
           </div>
@@ -166,17 +182,13 @@
     <section id="services" class="section solid">
       <div class="container">
         <h2 class="reveal">Our services</h2>
-        <p class="kicker reveal reveal-delay-1">We currently focus on Urology.</p>
-        <div class="grid">
-          <div class="card reveal">
-            <div class="icon" aria-hidden="true">🏥</div>
-            <h3>Urology</h3>
-            <p class="mutetext">Coordination with experienced urology teams, hospital stay support, and recovery planning.</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px">
-              <button class="btn btn-primary btn-sm" id="openOps">Most common operations</button>
-              <a class="btn btn-sm" style="background:#eef7f8" href="#contact">Request consultation</a>
-            </div>
-          </div>
+        <p class="kicker reveal reveal-delay-1">We currently focus on urology and are expanding to other specialties soon.</p>
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">🏥</div>
+          <h3>Urology</h3>
+          <p class="mutetext">We coordinate advanced urological surgeries and treatments in Tbilisi, with top international surgeons and leading local hospitals.</p>
+          <button class="btn btn-primary btn-sm" id="openOps" style="margin-top:8px">Click to view procedures</button>
+          <p style="margin-top:12px; font-weight:700; color:var(--brand-700)">More specialties coming soon!</p>
         </div>
       </div>
     </section>
@@ -199,24 +211,16 @@
         <div class="container">
           <h2 class="reveal">About Medera Global</h2>
           <p class="lead light reveal reveal-delay-1">Care coordination for international patients in Georgia.</p>
-          <div class="grid" style="grid-template-columns:1.3fr .7fr">
+          <div class="grid" style="grid-template-columns:1fr">
             <div class="reveal">
-              <p>Medera Global is a Tbilisi based care coordination group that connects international patients with world class doctors at accredited hospitals and private clinics in Georgia. We turn a complex journey into a simple plan that begins with your first question and ends with your return home.</p>
-              <p>Your coordinator is a single point of contact for the entire pathway. We collect and translate medical records, schedule consultations, align specialists, and organise travel support when needed. During treatment we are present and responsive, so you never feel alone or uncertain about next steps.</p>
-              <p>Our partner network is chosen for clinical outcomes, safety, and clear communication. We work with teams that explain options plainly, respect your time, and focus on results that matter to you. Every case receives a tailored plan that reflects your health goals, budget, and timing.</p>
-              <p>Trust is built through clarity. You always know who is treating you, what is planned, and how decisions are made. Confidentiality is standard. Communication is available in English, German, Hebrew, and Russian. The goal is simple. Better care, fewer barriers, and a calm experience from consultation to full recovery.</p>
-            </div>
-            <div class="card reveal-x" style="background:rgba(255,255,255,.98);color:var(--text)">
-              <h3 style="margin-top:0">Quick facts</h3>
-              <ul>
-                <li>Founded in 2025 in Tbilisi</li>
-                <li>Partner doctors at accredited clinics</li>
-                <li>Languages: English, German, Hebrew, Russian</li>
-                <li>Services: Urology</li>
-              </ul>
+              <p>Medera Global brings international patients together with outstanding surgeons from around the world. We bring top doctors to perform surgeries and provide care in Tbilisi. Patients from countries with limited access to advanced procedures can finally receive the treatments they need.</p>
+              <p>We work only with the best hospitals and private clinics in Tbilisi, selected for their medical standards, safety, and reliability. Each case is matched to the right setting and specialists, depending on the medical needs.</p>
+              <p>Our team coordinates the entire process. We collect and translate medical documents, schedule consultations, align treatment plans, and provide local support when needed. From your first question to full recovery, we stay by your side.</p>
+              <p>Communication is available in English, Hebrew, Russian, and Georgian.<br>
+              Our goal is clear. To make world class care possible, accessible, and smooth for every patient who needs it.</p>
             </div>
           </div>
-        </div>
+</div>
       </div>
     </section>
 
@@ -227,22 +231,14 @@
       <div class="parallax-content">
         <div class="container">
           <h2 class="reveal">Our mission</h2>
-          <p class="lead light reveal reveal-delay-1">Make world‑class medical care in Georgia simple, safe, and accessible for international patients.</p>
-          <div class="grid" style="grid-template-columns:1.2fr .8fr">
+          <div class="grid" style="grid-template-columns:1fr">
             <div class="reveal">
-              <p>We handle clinical and logistical coordination end to end: intake and records review, precise case matching, appointment scheduling, travel assistance, in‑clinic support, and post‑care follow‑up. Your coordinator keeps timelines moving and turns medical decisions into clear next steps.</p>
-              <p>Our network is built on outcomes and accreditation. We work only with doctors and clinics that meet rigorous standards for safety and communication, then align everyone around your goals—so your time goes into getting better, not navigating a system.</p>
-            </div>
-            <div class="card reveal-x" style="background:rgba(255,255,255,.98);color:var(--text)">
-              <h3 style="margin-top:0">What this means</h3>
-              <ul>
-                <li>One plan, one coordinator — from first call to recovery</li>
-                <li>Accredited clinics and proven doctors in Georgia</li>
-                <li>Plain‑language updates, privacy, and fast response times</li>
-              </ul>
+              <p class="lead light">We believe that access to excellent healthcare should not depend on where you live. Medera Global brings together top surgeons and the best clinics in Tbilisi to make high-quality treatment available to patients from around the world.</p>
+              <p class="lead light">Beyond individual journeys, we are building a system that opens long-term access to care, so more people can get the treatment they need, when they need it.</p>
+              <p class="lead light">We focus on simplicity, safety, and support, so your energy goes into healing.</p>
             </div>
           </div>
-        </div>
+</div>
       </div>
     </section>
 
@@ -302,23 +298,21 @@
   <div class="modal-backdrop" id="opsModal" role="dialog" aria-modal="true" aria-labelledby="opsTitle" aria-hidden="true">
     <div class="modal">
       <header>
-        <h3 id="opsTitle">Common urology operations</h3>
+        <h3 id="opsTitle">Common urology procedures</h3>
         <button class="close" id="closeOps" aria-label="Close">×</button>
       </header>
       <div class="content">
         <div class="grid-ops">
-          <span class="chip">Radical prostatectomy</span>
-          <span class="chip">TURP (BPH surgery)</span>
-          <span class="chip">Cystoscopy</span>
-          <span class="chip">Ureteroscopy</span>
-          <span class="chip">PCNL (kidney stones)</span>
-          <span class="chip">ESWL lithotripsy</span>
-          <span class="chip">Nephrectomy</span>
-          <span class="chip">Pyeloplasty</span>
-          <span class="chip">Urethroplasty</span>
-          <span class="chip">Circumcision</span>
-          <span class="chip">Vasectomy</span>
-          <span class="chip">Prostate biopsy</span>
+          <span class="chip">Robotic or laparoscopic prostatectomy</span>
+          <span class="chip">Kidney stone removal (PCNL, ureteroscopy)</span>
+          <span class="chip">Bladder cancer surgery (TURBT, cystectomy)</span>
+          <span class="chip">Urethral stricture repair</span>
+          <span class="chip">Hydrocele and varicocele surgery</span>
+          <span class="chip">Male infertility procedures (e.g. TESE, varicocelectomy)</span>
+          <span class="chip">Transurethral resection of the prostate (TURP)</span>
+          <span class="chip">Nephrectomy (partial or radical)</span>
+          <span class="chip">Penile prosthesis implantation</span>
+          <span class="chip">Prostate, bladder, and kidney biopsies</span>
         </div>
       </div>
     </div>
